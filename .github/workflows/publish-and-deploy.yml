@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.actor }}/deutschirischespielemanufaktur:latest
+  IMAGE_NAME: sparkobbable/deutschirischespielemanufaktur:latest
 
 jobs:
     publish:
