@@ -1,3 +1,4 @@
+[![Publish image and deploy](https://github.com/Sparkobbable/deutschirischespielemanufaktur/actions/workflows/publish-and-deploy.yml/badge.svg?branch=master)](https://github.com/Sparkobbable/deutschirischespielemanufaktur/actions/workflows/publish-and-deploy.yml)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
