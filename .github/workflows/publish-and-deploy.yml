@@ -33,8 +33,6 @@ jobs:
           # check this thread to understand why its needed:
           # <https://stackoverflow.com/a/70447517>
           run: |
-            chmod 600 /etc/hosts
-            echo "127.0.0.1 localhost" > /etc/hosts
             install -m 600 -D /dev/null ~/.ssh/id_rsa
             echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
             ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
