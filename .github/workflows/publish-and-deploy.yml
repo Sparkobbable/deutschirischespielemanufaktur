@@ -32,7 +32,7 @@ jobs:
         - name: add cloudflared
           uses: debugci/setup-cloudflared@v1
         - name: setup connector
-          run: cloudflared service install ${{CLOUDFLARED_TUNNEL_TOKEN}}
+          run: cloudflared service install ${{secrets.CLOUDFLARED_TUNNEL_TOKEN}}
         - name: install ssh keys
           # check this thread to understand why its needed:
           # <https://stackoverflow.com/a/70447517>
