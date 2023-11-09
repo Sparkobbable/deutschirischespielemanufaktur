@@ -29,12 +29,10 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-        - name: cloudflared
-          uses: Boostport/setup-cloudflare-warp@v1
-          with:
-            organization: your-organization
-            auth_client_id: ${{ secrets.CLOUDFLARE_AUTH_CLIENT_ID }}
-            auth_client_secret: ${{ secrets.CLOUDFLARE_AUTH_CLIENT_SECRET }}
+        - name: add cloudflared
+          uses: debugci/setup-cloudflared@v1
+        - name: setup connector
+          run: cloudflared service install ${{CLOUDFLARED_TUNNEL_TOKEN}}
         - name: install ssh keys
           # check this thread to understand why its needed:
           # <https://stackoverflow.com/a/70447517>
