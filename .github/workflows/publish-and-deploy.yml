@@ -33,13 +33,14 @@ jobs:
           uses: debugci/setup-cloudflared@v1
         - name: setup connector
           run: sudo cloudflared service install ${{secrets.CLOUDFLARED_TUNNEL_TOKEN}}
-        - name: install ssh keys
+        - name: install id rsa
           # check this thread to understand why its needed:
           # <https://stackoverflow.com/a/70447517>
-          run: |
-            install -m 600 -D /dev/null ~/.ssh/id_rsa
-            echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-            ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
+          run: install -m 600 -D /dev/null ~/.ssh/id_rsa
+        - name: write private key
+          run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        - name: keyscan host
+          run: ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
         - name: connect and pull
           run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }}/diSpiele-platform && git pull && docker compose up -d && exit"
         - name: cleanup
