@@ -6,7 +6,7 @@ on:
 
 env:
     REGISTRY: ghcr.io
-    IMAGE_NAME: sparkobbable/deutschirischespielemanufaktur:${{github.ref_name}}
+    IMAGE_NAME: sparkobbable/deutschirischespielemanufaktur:latest
 
 jobs:
     publish:
@@ -42,6 +42,6 @@ jobs:
             - name: config ssh
               run: echo "${{ secrets.SSH_CONFIG }}" > ~/.ssh/config
             - name: connect and pull
-              run: ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }}/diSpiele-platform && git pull && docker compose up -d && exit"
+              run: ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }}/diSpiele-platform && git pull && docker-compose down --rmi all && docker compose up -d && exit"
             - name: cleanup
               run: rm -rf ~/.ssh
