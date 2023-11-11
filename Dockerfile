@@ -12,13 +12,10 @@ RUN CI='' npm run build
 # production environment
 FROM nginx:latest
 
-ARG PORT
-ENV PORT $PORT
-
 COPY --from=build /app/build /usr/share/nginx/html
 
 COPY ./default.conf /etc/nginx/conf.d/default.conf
 COPY ./proxy.conf /etc/nginx/includes/proxy.conf
 
-EXPOSE $PORT
-CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
+EXPOSE 82
+CMD [ "ngixn", "-g", "daemon off;" ]
