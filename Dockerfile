@@ -18,4 +18,4 @@ COPY ./default.conf /etc/nginx/conf.d/default.conf
 COPY ./proxy.conf /etc/nginx/includes/proxy.conf
 
 EXPOSE 82
-CMD [ "ngixn", "-g", "daemon off;" ]
+CMD [ "nginx", "-g", "daemon off;" ]
