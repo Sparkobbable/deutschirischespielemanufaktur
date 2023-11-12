@@ -1,11 +1,19 @@
 import "./App.css";
+import AppRouter from "./AppRouter";
+import Menu from "./menu/Menu";
 
 function App() {
 	return (
-		<p>
-			Die Website der Deutsch-Irischen Spielemanufaktur befindet sich
-			derzeit im Aufbau.
-		</p>
+		<>
+			<div className="flex bg-background w-full">
+				<div className="border-r-2 w-1/5">
+					<Menu></Menu>
+				</div>
+				<div className="w-4/5">
+					<AppRouter></AppRouter>
+				</div>
+			</div>
+		</>
 	);
 }
 
