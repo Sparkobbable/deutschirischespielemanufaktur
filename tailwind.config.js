@@ -12,6 +12,8 @@ module.exports = {
 			primary: "#FFFFFF",
 			background: "#B4BEFA",
 			bgdark: "#8F97C6",
+			grey: "#737175",
+			headline: "#5F76C2",
 		},
 		fontFamily: {
 			sans: ["Graphik", "sans-serif"],
@@ -31,6 +33,7 @@ module.exports = {
 				"screen-50": "50vh",
 				0.45: "45%",
 				42: "10.5rem",
+				"1/10": "10%",
 			},
 			width: {
 				0.2: "20%",
@@ -53,4 +56,3 @@ module.exports = {
 	},
 	plugins: [],
 };
-

@@ -1,10 +1,11 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Home from "./pages/home/Home";
 
 export default function AppRouter() {
 	const router = createBrowserRouter([
 		{
 			path: "/",
-			element: <p></p>,
+			element: <Home />,
 			errorElement: <p></p>,
 			children: [
 				{
