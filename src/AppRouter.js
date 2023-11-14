@@ -1,16 +1,25 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/home/Home";
+import Error from "./pages/error/Error";
+import About from "./pages/about/About";
+import App from "./App";
 
 export default function AppRouter() {
 	const router = createBrowserRouter([
 		{
 			path: "/",
-			element: <Home />,
-			errorElement: <p></p>,
+			element: <App />,
+			errorElement: (
+				<Error errorcode="404" errormessage="Element nicht gefunden." />
+			),
 			children: [
 				{
+					path: "",
+					element: <Home />,
+				},
+				{
 					path: "about",
-					element: <p></p>,
+					element: <About />,
 				},
 				{
 					path: "idea",

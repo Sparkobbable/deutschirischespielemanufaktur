@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import "./App.css";
 import AppRouter from "./AppRouter";
 import Menu from "./menu/Menu";
@@ -10,7 +11,7 @@ function App() {
 					<Menu></Menu>
 				</div>
 				<div className="w-4/5 p-10">
-					<AppRouter></AppRouter>
+					<Outlet></Outlet>
 				</div>
 			</div>
 		</>
