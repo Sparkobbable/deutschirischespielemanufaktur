@@ -3,6 +3,12 @@ import Home from "./pages/home/Home";
 import Error from "./pages/error/Error";
 import About from "./pages/about/About";
 import App from "./App";
+import Idea from "./pages/idea/Idea";
+import Rules from "./pages/rules/Rules";
+import Order from "./pages/order/Order";
+import Privacy from "./pages/privacy/Privacy";
+import Impressum from "./pages/impressum/Impressum";
+import Contact from "./pages/contact/Contact";
 
 export default function AppRouter() {
 	const router = createBrowserRouter([
@@ -23,27 +29,27 @@ export default function AppRouter() {
 				},
 				{
 					path: "idea",
-					element: <p></p>,
+					element: <Idea />,
 				},
 				{
 					path: "rules",
-					element: <p></p>,
+					element: <Rules />,
 				},
 				{
 					path: "order",
-					element: <p></p>,
+					element: <Order />,
 				},
 				{
 					path: "privacy",
-					element: <p></p>,
+					element: <Privacy />,
 				},
 				{
 					path: "impressum",
-					element: <p></p>,
+					element: <Impressum />,
 				},
 				{
 					path: "contact",
-					element: <p></p>,
+					element: <Contact />,
 				},
 			],
 		},
