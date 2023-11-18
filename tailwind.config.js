@@ -40,6 +40,7 @@ module.exports = {
 				0.3: "30%",
 				0.4: "40%",
 				0.45: "45%",
+				0.8: "80%",
 			},
 			minHeight: {
 				"screen-15": "15vh",
@@ -54,5 +55,5 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [],
+	plugins: [require("daisyui")],
 };

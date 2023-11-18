@@ -39,6 +39,7 @@
     ]
   },
   "devDependencies": {
+    "daisyui": "^4.4.2",
     "env-cmd": "^10.1.0",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.5"
