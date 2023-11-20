@@ -9,6 +9,7 @@ import Order from "./pages/order/Order";
 import Privacy from "./pages/privacy/Privacy";
 import Impressum from "./pages/impressum/Impressum";
 import Contact from "./pages/contact/Contact";
+import OrderForm from "./pages/order/orderform/OrderForm";
 
 export default function AppRouter() {
 	const router = createBrowserRouter([
@@ -37,7 +38,16 @@ export default function AppRouter() {
 				},
 				{
 					path: "order",
-					element: <Order />,
+					children: [
+						{
+							path: "",
+							element: <Order />,
+						},
+						{
+							path: "new",
+							element: <OrderForm />,
+						},
+					],
 				},
 				{
 					path: "privacy",

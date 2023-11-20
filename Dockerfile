@@ -7,6 +7,8 @@ COPY package-lock.json ./
 RUN npm ci
 RUN npm install react-scripts@5.0.1 -g
 COPY . ./
+ARG REACT_APP_BASE_URL
+ENV REACT_APP_BASE_URL $REACT_APP_BASE_URL
 RUN CI='' npm run build 
 
 # production environment

@@ -14,6 +14,7 @@ module.exports = {
 			bgdark: "#8F97C6",
 			grey: "#737175",
 			headline: "#5F76C2",
+			error: "#FF5861",
 		},
 		fontFamily: {
 			sans: ["Graphik", "sans-serif"],

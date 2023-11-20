@@ -7,6 +7,7 @@ on:
 env:
     REGISTRY: ghcr.io
     IMAGE_NAME: sparkobbable/deutschirischespielemanufaktur:dev
+    REACT_APP_BASE_URL: https://dev.deutschirischespielemanufaktur.com/api
 
 jobs:
     publish:
@@ -20,7 +21,7 @@ jobs:
                   echo ${{ secrets.PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             - name: Build and Publish
               run: |
-                  docker build . --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+                  docker build . --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} --build-arg REACT_APP_BASE_URL=${{env.REACT_APP_BASE_URL}}
                   docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
     deploy:
