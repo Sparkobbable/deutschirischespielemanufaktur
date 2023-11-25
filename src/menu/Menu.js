@@ -19,13 +19,13 @@ export default function Menu() {
 
 	return (
 		<>
-			<div className="flex flex-col justify-between h-full">
+			<div className="flex flex-col justify-between h-full bg-grey opacity-90">
 				<div className="block h-3/4">
 					<div
 						className={
 							!isHome
-								? "hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey mx-5 flex flex-col justify-center"
-								: "font-bold h-1/10 border-b-2 border-grey mx-5 flex flex-col justify-center"
+								? "hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey flex flex-col justify-center"
+								: "font-bold h-1/10 border-b-2 border-grey flex flex-col justify-center"
 						}
 						onClick={() => navigateTo("/")}
 					>
@@ -35,13 +35,13 @@ export default function Menu() {
 					</div>
 					<div
 						onClick={() => navigateTo("/about")}
-						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey mx-5 flex flex-col justify-center"
+						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey flex flex-col justify-center"
 					>
 						<p className="text-center -translate-y-1/4">Über uns</p>
 					</div>
 					<div
 						onClick={() => navigateTo("/idea")}
-						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey mx-5 flex flex-col justify-center"
+						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey flex flex-col justify-center"
 					>
 						<p className="text-center -translate-y-1/4">
 							Spielidee
@@ -49,7 +49,7 @@ export default function Menu() {
 					</div>
 					<div
 						onClick={() => navigateTo("/rules")}
-						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey mx-5 flex flex-col justify-center"
+						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey flex flex-col justify-center"
 					>
 						<p className="text-center -translate-y-1/4">
 							Regeln & Varianten
@@ -57,7 +57,7 @@ export default function Menu() {
 					</div>
 					<div
 						onClick={() => navigateTo("/order")}
-						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey mx-5 flex flex-col justify-center"
+						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey flex flex-col justify-center"
 					>
 						<p className="text-center -translate-y-1/4">
 							Bestellungen
@@ -65,7 +65,7 @@ export default function Menu() {
 					</div>
 					<div
 						onClick={() => navigateTo("/privacy")}
-						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey mx-5 flex flex-col justify-center"
+						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey flex flex-col justify-center"
 					>
 						<p className="text-center -translate-y-1/4">
 							Datenschutzerklärung
@@ -73,7 +73,7 @@ export default function Menu() {
 					</div>
 					<div
 						onClick={() => navigateTo("/impressum")}
-						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey mx-5 flex flex-col justify-center"
+						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey flex flex-col justify-center"
 					>
 						<p className="text-center -translate-y-1/4">
 							Impressum
@@ -81,7 +81,7 @@ export default function Menu() {
 					</div>
 					<div
 						onClick={() => navigateTo("/contact")}
-						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey mx-5 flex flex-col justify-center"
+						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey flex flex-col justify-center"
 					>
 						<p className="text-center -translate-y-1/4">Kontakt</p>
 					</div>

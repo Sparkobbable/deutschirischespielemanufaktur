@@ -2,11 +2,14 @@ import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { EMAIL_REGEX } from "../../../utils/constants";
 import { ApiService } from "../../../utils/ApiService";
+import { useNavigate } from "react-router-dom";
 
 export default function OrderForm() {
 	const [searchParams] = useSearchParams();
 	const [quantity] = useState(searchParams.get("quantity"));
 	const [item] = useState(searchParams.get("item"));
+
+	const navigate = useNavigate();
 
 	const apiService = new ApiService();
 
@@ -54,13 +57,12 @@ export default function OrderForm() {
 			errors.push("email");
 		}
 		setFormErrors(errors);
+		return errors;
 	}
 
 	function order() {
-		validateForm();
-		console.log(formErrors);
-		console.log(formErrors.includes("gender"));
-		if (formErrors.length > 0) {
+		const errors = validateForm();
+		if (errors.length > 0) {
 			return;
 		}
 
@@ -70,7 +72,7 @@ export default function OrderForm() {
 			quantity: quantity,
 		};
 
-		apiService.createOrder(request);
+		apiService.createOrder(request).then(() => navigate("/order"));
 	}
 
 	return (
@@ -81,7 +83,7 @@ export default function OrderForm() {
 				</h1>
 			</div>
 			<div className="mt-10 w-full text-center">
-				<div className="w-1/2 flex justify-between mx-auto">
+				<div className="lg:w-1/2  flex justify-between mx-auto">
 					<p className="translate-y-2">Anrede: </p>
 					<select
 						className={`select ${
@@ -117,7 +119,7 @@ export default function OrderForm() {
 						</option>
 					</select>
 				</div>
-				<div className="w-1/2 flex justify-between mx-auto mt-3">
+				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
 					<p className="translate-y-2">Vorname: </p>
 					<input
 						type="text"
@@ -136,7 +138,7 @@ export default function OrderForm() {
 						}
 					/>
 				</div>
-				<div className="w-1/2 flex justify-between mx-auto mt-3">
+				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
 					<p className="translate-y-2">Nachname: </p>
 					<input
 						type="text"
@@ -155,7 +157,7 @@ export default function OrderForm() {
 						}
 					/>
 				</div>
-				<div className="w-1/2 flex justify-between mx-auto mt-3">
+				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
 					<p className="translate-y-2">Unternehmen: </p>
 					<input
 						type="text"
@@ -170,8 +172,8 @@ export default function OrderForm() {
 						}
 					/>
 				</div>
-				<div className="w-1/2 flex justify-between mx-auto mt-3">
-					<p className="translate-y-2">Straße und Hausnummer: </p>
+				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
+					<p className="translate-y-2">Straße + Haus-Nr.: </p>
 					<input
 						type="text"
 						className={`input ${
@@ -189,7 +191,7 @@ export default function OrderForm() {
 						}
 					/>
 				</div>
-				<div className="w-1/2 flex justify-between mx-auto mt-3">
+				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
 					<p className="translate-y-2">PLZ: </p>
 					<input
 						type="text"
@@ -208,7 +210,7 @@ export default function OrderForm() {
 						}
 					/>
 				</div>
-				<div className="w-1/2 flex justify-between mx-auto mt-3">
+				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
 					<p className="translate-y-2">Stadt: </p>
 					<input
 						type="text"
@@ -227,7 +229,7 @@ export default function OrderForm() {
 						}
 					/>
 				</div>
-				<div className="w-1/2 flex justify-between mx-auto mt-3">
+				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
 					<p className="translate-y-2">Land: </p>
 					<select
 						className={`select ${
@@ -257,7 +259,7 @@ export default function OrderForm() {
 						))}
 					</select>
 				</div>
-				<div className="w-1/2 flex justify-between mx-auto mt-3">
+				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
 					<p className="translate-y-2">E-Mail: </p>
 					<input
 						type="email"
@@ -276,7 +278,7 @@ export default function OrderForm() {
 						}
 					/>
 				</div>
-				<div className="w-1/2 flex justify-between mx-auto mt-3">
+				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
 					<p className="translate-y-2">Telefonnummer: </p>
 					<input
 						type="text"
@@ -291,7 +293,7 @@ export default function OrderForm() {
 						}
 					/>
 				</div>
-				<div className="w-1/2 flex justify-between mx-auto mt-3">
+				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
 					<p className="translate-y-2">Bemerkung: </p>
 					<textarea
 						className="textarea textarea-bordered w-1/2"

@@ -28,22 +28,22 @@ export default function Order() {
 					“{item.displayName}”
 				</span>
 				<img
-					className="w-1/3 h-auto mx-auto"
+					className="lg:w-1/3 w-3/4 h-auto mx-auto"
 					src={cover}
 					alt="Cover"
 				></img>
-				<div className="flex mx-auto w-1/3 mt-5 justify-between">
+				<div className="flex mx-auto lg:w-1/3 w-3/4 mt-5 justify-between">
 					<p className="mr-4 translate-y-2">Preis: </p>
 					<span className="text-headline text-lg">
 						{item.price} €
 					</span>
 				</div>
-				<div className="flex mx-auto w-1/3 mt-5 justify-between">
+				<div className="flex mx-auto lg:w-1/3 w-3/4 mt-5 justify-between">
 					<p className="mr-4 translate-y-2">Anzahl: </p>
 					<input
 						type="number"
 						placeholder="Anzahl"
-						className="input input-bordered"
+						className="input input-bordered w-4/5"
 						value={quantity}
 						onChange={(e) => setQuantity(e.target.valueAsNumber)}
 						min={1}
