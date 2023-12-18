@@ -23,7 +23,43 @@ export default function Order() {
 					Bestellungen
 				</h1>
 			</div>
-			<div className="mt-10 w-full text-center">
+			<div className="mt-5">
+				<p className="text-lg">
+					„Dein Jahr - Die Magie der Erinnerung“ ist eine tolle Idee
+					als Wichtelgeschenk, Weihnachtsgeschenk oder Mitbringsel für
+					die Silvesterfeier, oder Ihr schenkt es Euch einfach selbst!
+					Das Spiel ist zum Preis von{" "}
+					<span className="text-headline text-lg">
+						€{item.price} zuzüglich Versandkosten{" "}
+					</span>
+					erhältlich.
+				</p>
+				<div className="overflow-x-auto w-1/4 mr-auto bg-background mt-5">
+					<table className="table border border-solid border-1 border-grey">
+						<thead className="bg-grey">
+							<tr className=" border border-solid border-1 border-grey">
+								<th>Bestellmenge</th>
+								<th>Versandkosten</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr className=" border border-solid border-1 border-grey">
+								<td>1-5 Spiele</td>
+								<td>1,85 €</td>
+							</tr>
+							<tr className=" border border-solid border-1 border-grey">
+								<td>6-10 Spiele</td>
+								<td>3,00 €</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p className="text-xs">
+					Bitte kontaktiert uns zu den Versandkosten bei größeren
+					Bestellmengen.
+				</p>
+			</div>
+			<div className="mt-5 w-full text-center">
 				<span className="text-headline text-lg">
 					“{item.displayName}”
 				</span>

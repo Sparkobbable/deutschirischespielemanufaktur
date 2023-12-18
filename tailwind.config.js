@@ -10,11 +10,12 @@ module.exports = {
 		},
 		colors: {
 			primary: "#FFFFFF",
-			background: "#B4BEFA",
+			background: "#EEEEEE",
 			bgdark: "#8F97C6",
 			grey: "#737175",
 			headline: "#5F76C2",
 			error: "#FF5861",
+			href: "#0563C1",
 		},
 		fontFamily: {
 			sans: ["Graphik", "sans-serif"],

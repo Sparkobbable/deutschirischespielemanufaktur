@@ -1,10 +1,14 @@
+import astridjutta from "../../assets/astridjutta.JPG";
+import badsoden from "../../assets/badsoden.jpeg";
+import dublin from "../../assets/dublin.JPG";
+
 export default function About() {
 	return (
 		<>
 			<div className="w-full text-center">
 				<h1 className="text-headline text-2xl font-bold">Über uns</h1>
-				<div className="flex mt-10">
-					<div className="w-4/5 block text-center">
+				<div className="lg:flex mt-10">
+					<div className="w-2/3 block text-center">
 						<p className="text-lg">
 							Wir haben uns vor 30 Jahren bei der Arbeit in
 							Frankfurt kennengelernt und die Freundschaft trotz
@@ -23,7 +27,9 @@ export default function About() {
 							<span className="text-headline text-lg">
 								Astrid{" "}
 							</span>
-							wohnt in Bad Soden...
+							ist im Taunus zu Hause und ein bekennender
+							Spiele-Nerd mit einer umfangreichen Spielesammlung
+							in einem eigens hierfür konzipierten Schrank.
 						</p>
 						<p className="text-lg mt-10">
 							<span className="text-headline text-lg">Jutta</span>{" "}
@@ -40,7 +46,23 @@ export default function About() {
 							.
 						</p>
 					</div>
-					<div className="border-2 w-1/5 h-full">Bilder folgen</div>
+					<div className="h-full w-1/3 flex lg:flex-col justify-between sm:mt-10 lg:-mt-20">
+						<img
+							src={astridjutta}
+							alt="Astrid und Jutta"
+							className="w-3/4 h-auto lg:mb-10 lg:ml-10"
+						></img>
+						<img
+							src={badsoden}
+							alt="Bad Soden"
+							className="w-3/5  h-auto lg:mb-10 ml-10"
+						></img>
+						<img
+							src={dublin}
+							alt="Dublin"
+							className="w-3/5  h-auto lg:mb-10 ml-10"
+						></img>
+					</div>
 				</div>
 				<p className="text-lg mt-20">
 					Bei unserem Projekt haben uns viele liebe Menschen
@@ -50,15 +72,19 @@ export default function About() {
 					ihrem künstlerischen Talent, Juttas Patenkind{" "}
 					<span className="text-headline text-lg">Jakob</span> mit
 					seinen IT-Kenntnissen und unserer Freundin{" "}
-					<span className="text-headline text-lg">Erika</span> mit
-					ihrer Expertise in der Druckindustrie.
+					<span className="text-headline text-lg">Erika</span>, die
+					uns nicht nur mit ihrer Expertise in der Druckindustrie,
+					sondern auch mit vielen großartigen Ideen stets zur Seite
+					stand und ohne die dieses Spiel nur eine schöne Idee
+					geblieben wäre.
 				</p>
 				<p className="text-lg mt-10">
 					Ein besonderes Dankeschön gilt auch dem{" "}
 					<span className="text-headline text-lg">
 						"Frankfurter Kranz"
 					</span>{" "}
-					für die Inspiration und vielen schönen Spielstunden!
+					für die Inspiration und vielen schönen Spielstunden in über
+					20 Jahren!
 				</p>
 			</div>
 		</>

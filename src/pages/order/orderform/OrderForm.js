@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { createRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { EMAIL_REGEX } from "../../../utils/constants";
 import { ApiService } from "../../../utils/ApiService";
 import { useNavigate } from "react-router-dom";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function OrderForm() {
 	const [searchParams] = useSearchParams();
 	const [quantity] = useState(searchParams.get("quantity"));
 	const [item] = useState(searchParams.get("item"));
+
+	// const recaptchaRef = createRef();
 
 	const navigate = useNavigate();
 
@@ -26,6 +29,8 @@ export default function OrderForm() {
 	const [customer, setCustomer] = useState({});
 	const [gender, setGender] = useState();
 	const [country, setCountry] = useState();
+
+	const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
 	const [formErrors, setFormErrors] = useState([]);
 
@@ -56,22 +61,28 @@ export default function OrderForm() {
 		if (!customer.email || !EMAIL_REGEX.test(customer.email)) {
 			errors.push("email");
 		}
+
+		if (!privacyAccepted) {
+			errors.push("privacy");
+		}
 		setFormErrors(errors);
 		return errors;
 	}
 
-	function order() {
+	async function order() {
 		const errors = validateForm();
 		if (errors.length > 0) {
 			return;
 		}
+		// const token = await recaptchaRef.current.executeAsync();
 
+		// console.log(token);
 		const request = {
 			...customer,
 			itemId: item,
 			quantity: quantity,
+			// captchaToken: token,
 		};
-
 		apiService.createOrder(request).then(() => navigate("/order"));
 	}
 
@@ -82,7 +93,7 @@ export default function OrderForm() {
 					Bestellformular
 				</h1>
 			</div>
-			<div className="mt-10 w-full text-center">
+			<form className="mt-10 w-full text-center">
 				<div className="lg:w-1/2  flex justify-between mx-auto">
 					<p className="translate-y-2">Anrede: </p>
 					<select
@@ -314,13 +325,47 @@ export default function OrderForm() {
 						</span>
 					</label>
 				)}
+				<div className="form-control lg:w-1/2 mx-auto">
+					<label className="label cursor-pointer justify-start">
+						<input
+							type="checkbox"
+							checked={privacyAccepted}
+							className={
+								"checkbox" + formErrors.includes("privacy")
+									? " checkbox-error"
+									: ""
+							}
+							onChange={() =>
+								setPrivacyAccepted(!privacyAccepted)
+							}
+						/>
+						<span
+							className="label-text cursor-pointer ml-2"
+							onClick={() => navigate("/privacy")}
+						>
+							Es gilt die Datenschutzerklärung.
+						</span>
+					</label>
+					<p className="text-xs text-start">
+						Mit dem Häkchen zur Datenschutzerklärung erklärst Du
+						Dich einverstanden, dass Dein Name, Deine Adresse und
+						Dein E-Mail für die Abwicklung der Bestellung
+						gespeichert und genutzt werden darf.
+					</p>
+				</div>
 				<button
 					onClick={() => order()}
-					className="btn bg-headline w-1/2 mx-auto mt-10 border-none"
+					className="btn bg-headline w-1/2 mx-auto mt-5 border-none"
 				>
 					Jetzt verbindlich bestellen
 				</button>
-			</div>
+			</form>
+			{/* <ReCAPTCHA
+				sitekey="6LfWBDUpAAAAAD0sCMmmyjsiAW8xtTgEf1njMndI"
+				size="invisible"
+				ref={recaptchaRef}
+				onErrored={(e) => console.error(e)}
+			/> */}
 		</>
 	);
 }
