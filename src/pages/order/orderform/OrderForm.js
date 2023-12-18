@@ -26,6 +26,21 @@ export default function OrderForm() {
 		].sort()
 	);
 
+	const [sources, setSources] = useState(
+		[
+			"Ich kenne euch persönlich",
+			"Ich kenne eure Berater",
+			"Empfehlung durch Freunde",
+			"Durch Euren Flyer",
+			"Per Websuche",
+			"Über Instagram",
+			"Über Etsy",
+			"Über Amazon Marketplace",
+		].sort()
+	);
+
+	const [foundBy, setFoundBy] = useState();
+
 	const [customer, setCustomer] = useState({});
 	const [gender, setGender] = useState();
 	const [country, setCountry] = useState();
@@ -81,6 +96,7 @@ export default function OrderForm() {
 			...customer,
 			itemId: item,
 			quantity: quantity,
+			foundBy: foundBy,
 			// captchaToken: token,
 		};
 		apiService.createOrder(request).then(() => navigate("/order"));
@@ -88,12 +104,12 @@ export default function OrderForm() {
 
 	return (
 		<>
-			<div className="w-full text-center">
+			<div className="w-full text-center -mt-7">
 				<h1 className="text-headline text-2xl font-bold">
 					Bestellformular
 				</h1>
 			</div>
-			<form className="mt-10 w-full text-center">
+			<form className="mt-5 w-full text-center">
 				<div className="lg:w-1/2  flex justify-between mx-auto">
 					<p className="translate-y-2">Anrede: </p>
 					<select
@@ -318,14 +334,26 @@ export default function OrderForm() {
 						}
 					/>
 				</div>
-				{formErrors.length > 0 && (
-					<label className="label w-1/2 mx-auto -mb-8">
-						<span className="label-text-alt text-error">
-							Es sind nicht alle Pflichtfelder korrekt befüllt!
-						</span>
-					</label>
-				)}
-				<div className="form-control lg:w-1/2 mx-auto">
+				<div className="lg:w-1/2 mt-3 flex justify-between mx-auto">
+					<p className="w-1/2 text-start">
+						Wie bist du auf uns aufmerksam geworden? (optional):{" "}
+					</p>
+					<select
+						className="select select-bordered w-1/2"
+						value={foundBy}
+						onChange={(e) => {
+							setFoundBy(e.target.value);
+						}}
+					>
+						<option disabled selected>
+							Keine Angabe
+						</option>
+						{sources.map((s) => (
+							<option key={s}>{s}</option>
+						))}
+					</select>
+				</div>
+				<div className="form-control lg:w-1/2 mx-auto mt-3">
 					<label className="label cursor-pointer justify-start">
 						<input
 							type="checkbox"
@@ -353,6 +381,13 @@ export default function OrderForm() {
 						gespeichert und genutzt werden darf.
 					</p>
 				</div>
+				{formErrors.length > 0 && (
+					<label className="label w-1/2 mx-auto -mb-8">
+						<span className="label-text-alt text-error">
+							Es sind nicht alle Pflichtfelder korrekt befüllt!
+						</span>
+					</label>
+				)}
 				<button
 					onClick={() => order()}
 					className="btn bg-headline w-1/2 mx-auto mt-5 border-none"
