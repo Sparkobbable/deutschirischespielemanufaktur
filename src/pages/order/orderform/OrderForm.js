@@ -10,9 +10,9 @@ export default function OrderForm() {
 	const [quantity] = useState(searchParams.get("quantity"));
 	const [item] = useState(searchParams.get("item"));
 
-	// const recaptchaRef = createRef();
-
 	const navigate = useNavigate();
+
+	const recaptchaRef = createRef();
 
 	const apiService = new ApiService();
 
@@ -48,6 +48,8 @@ export default function OrderForm() {
 	const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
 	const [formErrors, setFormErrors] = useState([]);
+
+	const [orderId, setOrderId] = useState();
 
 	function validateForm() {
 		setFormErrors([]);
@@ -89,17 +91,23 @@ export default function OrderForm() {
 		if (errors.length > 0) {
 			return;
 		}
-		// const token = await recaptchaRef.current.executeAsync();
+		const token = await recaptchaRef.current.executeAsync();
 
-		// console.log(token);
 		const request = {
 			...customer,
 			itemId: item,
 			quantity: quantity,
 			foundBy: foundBy,
-			// captchaToken: token,
+			captchaToken: token,
 		};
-		apiService.createOrder(request).then(() => navigate("/order"));
+		apiService.createOrder(request).then((res) => {
+			if (res.status === 201) {
+				setOrderId(res.data);
+				document.getElementById("orderreturn").showModal();
+			} else {
+				document.getElementById("ordererror").showModal();
+			}
+		});
 	}
 
 	return (
@@ -358,20 +366,24 @@ export default function OrderForm() {
 						<input
 							type="checkbox"
 							checked={privacyAccepted}
-							className={
-								"checkbox" + formErrors.includes("privacy")
-									? " checkbox-error"
+							className={`checkbox ${
+								formErrors.includes("privacy")
+									? "checkbox-error"
 									: ""
-							}
+							}`}
 							onChange={() =>
 								setPrivacyAccepted(!privacyAccepted)
 							}
 						/>
-						<span
-							className="label-text cursor-pointer ml-2"
-							onClick={() => navigate("/privacy")}
-						>
-							Es gilt die Datenschutzerklärung.
+						<span className="label-text ml-2">
+							Es gilt die{" "}
+							<span
+								className="label-text text-href cursor-pointer"
+								onClick={() => navigate("/privacy")}
+							>
+								Datenschutzerklärung
+							</span>
+							.
 						</span>
 					</label>
 					<p className="text-xs text-start">
@@ -382,25 +394,61 @@ export default function OrderForm() {
 					</p>
 				</div>
 				{formErrors.length > 0 && (
-					<label className="label w-1/2 mx-auto -mb-8">
+					<label className="label w-1/2 mx-auto -mb-5">
 						<span className="label-text-alt text-error">
 							Es sind nicht alle Pflichtfelder korrekt befüllt!
 						</span>
 					</label>
 				)}
 				<button
-					onClick={() => order()}
+					onClick={(e) => {
+						e.preventDefault();
+						order();
+					}}
 					className="btn bg-headline w-1/2 mx-auto mt-5 border-none"
 				>
 					Jetzt verbindlich bestellen
 				</button>
 			</form>
-			{/* <ReCAPTCHA
+			<ReCAPTCHA
 				sitekey="6LfWBDUpAAAAAD0sCMmmyjsiAW8xtTgEf1njMndI"
 				size="invisible"
 				ref={recaptchaRef}
 				onErrored={(e) => console.error(e)}
-			/> */}
+			/>
+			<dialog id="orderreturn" className="modal">
+				<div className="modal-box">
+					<h3 className="font-bold text-lg">
+						Bestellung erfolgreich!
+					</h3>
+					<p className="py-4">
+						Bestellung mit der Bestellnummer #{orderId} erfolgreich
+						aufgegeben.
+					</p>
+					<p className="py-4">
+						Wir werden Sie über die angegebene E-Mail kontaktieren.
+					</p>
+					<div className="modal-action">
+						<form method="dialog" className="modal-backdrop">
+							<button className="btn">Schließen</button>
+						</form>
+					</div>
+				</div>
+			</dialog>
+			<dialog id="ordererror" className="modal">
+				<div className="modal-box">
+					<h3 className="font-bold text-lg text-error">Fehler!</h3>
+					<p className="py-4">
+						Bei der Bestellung ist ein Fehler aufgetreten. Bitte
+						kontaktieren Sie uns.
+					</p>
+					<div className="modal-action">
+						<form method="dialog" className="modal-backdrop">
+							<button className="btn">Schließen</button>
+						</form>
+					</div>
+				</div>
+			</dialog>
 		</>
 	);
 }

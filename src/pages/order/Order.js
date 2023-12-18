@@ -34,7 +34,7 @@ export default function Order() {
 					</span>
 					erhältlich.
 				</p>
-				<div className="overflow-x-auto w-1/4 mr-auto bg-background mt-5">
+				<div className="overflow-x-auto w-1/2 lg:w-1/4 mr-auto bg-background mt-5">
 					<table className="table border border-solid border-1 border-grey">
 						<thead className="bg-grey">
 							<tr className=" border border-solid border-1 border-grey">
