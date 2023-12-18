@@ -1,13 +1,13 @@
-name: Publish image and deploy
+name: Publish image and deploy to dev stage
 
 on:
     push:
-        branches: ["master"]
+        branches: ["feature-dev"]
 
 env:
     REGISTRY: ghcr.io
-    IMAGE_NAME: sparkobbable/deutschirischespielemanufaktur:latest
-    REACT_APP_BASE_URL: https://deutschirischespielemanufaktur.com/api
+    IMAGE_NAME: sparkobbable/deutschirischespielemanufaktur:dev
+    REACT_APP_BASE_URL: https://dev.deutschirischespielemanufaktur.com/api
 
 jobs:
     publish:
@@ -21,7 +21,7 @@ jobs:
                   echo ${{ secrets.PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             - name: Build and Publish
               run: |
-                  docker build . --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} --build-arg NGINX_CONF=default.conf  --build-arg REACT_APP_BASE_URL=${{env.REACT_APP_BASE_URL}}
+                  docker build . --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} --build-arg REACT_APP_BASE_URL=${{env.REACT_APP_BASE_URL}} --build-arg NGINX_CONF=default.dev.conf
                   docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
     deploy:
@@ -43,6 +43,6 @@ jobs:
             - name: config ssh
               run: echo "${{ secrets.SSH_CONFIG }}" > ~/.ssh/config
             - name: connect and pull
-              run: ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }}/diSpiele-platform && git pull && docker compose down && docker rmi -f ghcr.io/sparkobbable/deutschirischespielemanufaktur:latest && docker compose up -d && exit"
+              run: ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }}/diSpiele-platform && git pull && docker compose down && docker rmi -f ghcr.io/sparkobbable/deutschirischespielemanufaktur:dev && docker compose up -d && exit"
             - name: cleanup
               run: rm -rf ~/.ssh
