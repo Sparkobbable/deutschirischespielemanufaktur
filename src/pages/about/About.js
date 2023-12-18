@@ -8,7 +8,7 @@ export default function About() {
 			<div className="w-full text-center">
 				<h1 className="text-headline text-2xl font-bold">Über uns</h1>
 				<div className="lg:flex mt-10">
-					<div className="w-2/3 block text-center">
+					<div className="lg:w-2/3 block text-center">
 						<p className="text-lg">
 							Wir haben uns vor 30 Jahren bei der Arbeit in
 							Frankfurt kennengelernt und die Freundschaft trotz
@@ -46,21 +46,21 @@ export default function About() {
 							.
 						</p>
 					</div>
-					<div className="h-full w-1/3 flex lg:flex-col justify-between sm:mt-10 lg:-mt-20">
+					<div className="h-full lg:w-1/3 flex lg:flex-col justify-between sm:mt-10 lg:-mt-20">
 						<img
 							src={astridjutta}
 							alt="Astrid und Jutta"
-							className="w-3/4 h-auto lg:mb-10 lg:ml-10"
+							className="w-1/4 lg:w-3/4 h-auto lg:mb-10 lg:ml-10"
 						></img>
 						<img
 							src={badsoden}
 							alt="Bad Soden"
-							className="w-3/5  h-auto lg:mb-10 ml-10"
+							className="w-1/4 lg:w-3/5  h-auto lg:mb-10 ml-10"
 						></img>
 						<img
 							src={dublin}
 							alt="Dublin"
-							className="w-3/5  h-auto lg:mb-10 ml-10"
+							className="w-1/4 lg:w-3/5  h-auto lg:mb-10 ml-10"
 						></img>
 					</div>
 				</div>
