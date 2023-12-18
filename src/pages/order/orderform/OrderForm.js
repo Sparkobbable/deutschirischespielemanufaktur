@@ -100,14 +100,17 @@ export default function OrderForm() {
 			foundBy: foundBy,
 			captchaToken: token,
 		};
-		apiService.createOrder(request).then((res) => {
-			if (res.status === 201) {
-				setOrderId(res.data);
-				document.getElementById("orderreturn").showModal();
-			} else {
+		apiService
+			.createOrder(request)
+			.then((res) => {
+				if (res.status === 201) {
+					setOrderId(res.data);
+					document.getElementById("orderreturn").showModal();
+				}
+			})
+			.catch((e) => {
 				document.getElementById("ordererror").showModal();
-			}
-		});
+			});
 	}
 
 	return (
@@ -429,7 +432,7 @@ export default function OrderForm() {
 						Wir werden Sie über die angegebene E-Mail kontaktieren.
 					</p>
 					<div className="modal-action">
-						<form method="dialog" className="modal-backdrop">
+						<form method="dialog">
 							<button className="btn">Schließen</button>
 						</form>
 					</div>
@@ -443,7 +446,7 @@ export default function OrderForm() {
 						kontaktieren Sie uns.
 					</p>
 					<div className="modal-action">
-						<form method="dialog" className="modal-backdrop">
+						<form method="dialog">
 							<button className="btn">Schließen</button>
 						</form>
 					</div>
