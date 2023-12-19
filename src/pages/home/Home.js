@@ -6,7 +6,7 @@ export default function Home() {
 	return (
 		<div className="flex flex-col justify-between h-full">
 			<div className="text-center">
-				<p className="text-lg">
+				<p className="text-lg ml-2">
 					Die Deutsch-Irische Spielemanufaktur präsentiert
 				</p>
 				<h1 className="text-2xl text-headline font-bold mt-10">
@@ -17,7 +17,7 @@ export default function Home() {
 				</p>
 				<p className="mt-10 text-lg">
 					Ob Silvester, Geburtstag, ein anderer Jahrestag oder einfach
-					nur so - dieses Spiel ermöglicht Dir, Dein Jahr Revue
+					nur so - dieses Spiel ermöglicht es Dir, Dein Jahr Revue
 					passieren zu lassen, besondere Augenblicke in Erinnerung zu
 					rufen und an Deinen Erfahrungen zu wachsen.
 				</p>
