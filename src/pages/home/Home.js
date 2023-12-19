@@ -6,7 +6,7 @@ export default function Home() {
 	return (
 		<div className="flex flex-col justify-between h-full">
 			<div className="text-center">
-				<p className="text-lg ml-2">
+				<p className="text-lg w-1/2 mx-auto">
 					Die Deutsch-Irische Spielemanufaktur präsentiert
 				</p>
 				<h1 className="text-2xl text-headline font-bold mt-10">
