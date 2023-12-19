@@ -55,6 +55,14 @@ function App() {
 					</p>
 				</div>
 			</dialog>
+			<dialog id="loading" className="modal">
+				<div className="modal-box">
+					<h3 className="font-bold text-lg">Bitte warten...</h3>
+					<div className="w-full flex justify-center">
+						<span className="loading loading-spinner loading-lg "></span>
+					</div>
+				</div>
+			</dialog>
 		</>
 	);
 }

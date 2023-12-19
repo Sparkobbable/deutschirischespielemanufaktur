@@ -100,15 +100,18 @@ export default function OrderForm() {
 			foundBy: foundBy,
 			captchaToken: token,
 		};
+		document.getElementById("loading").showModal();
 		apiService
 			.createOrder(request)
 			.then((res) => {
 				if (res.status === 201) {
 					setOrderId(res.data);
+					document.getElementById("loading").close();
 					document.getElementById("orderreturn").showModal();
 				}
 			})
 			.catch((e) => {
+				document.getElementById("loading").close();
 				document.getElementById("ordererror").showModal();
 			});
 	}
