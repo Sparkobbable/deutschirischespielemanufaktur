@@ -38,7 +38,7 @@ export default function Order() {
 					Nach vorheriger Absprache kann das Spiel auch in Bad Soden
 					abgeholt werden. Bitte dies im Bestellformular angeben.
 				</p>
-				<div className="overflow-x-auto w-2/3 lg:w-1/4 mr-auto bg-background mt-5">
+				<div className="overflow-x-auto w-full lg:w-1/4 mr-auto bg-background mt-5">
 					<table className="table border border-solid border-1 border-grey">
 						<thead className="bg-headline">
 							<tr className=" border border-solid border-1 border-grey">

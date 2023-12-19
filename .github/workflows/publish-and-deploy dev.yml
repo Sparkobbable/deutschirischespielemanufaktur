@@ -42,10 +42,6 @@ jobs:
               run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
             - name: config ssh
               run: echo "${{ secrets.SSH_CONFIG }}" > ~/.ssh/config
-            - name: Wait 2s for configuration/connection
-              uses: jakejarvis/wait-action@master
-              with:
-                time: '2s'
             - name: connect and pull
               run: ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }}/diSpiele-platform && git pull && docker compose stop dispielemanufaktur-dev && docker rmi -f ghcr.io/sparkobbable/deutschirischespielemanufaktur:dev && docker compose up -d && exit"
             - name: cleanup
