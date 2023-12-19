@@ -17,4 +17,12 @@ export class ApiService {
 			data: dto,
 		});
 	}
+
+	ping() {
+		return axios({
+			method: "get",
+			url: this.BASE_URL + "/availabilty/fullsystem",
+			timeout: 2500,
+		});
+	}
 }

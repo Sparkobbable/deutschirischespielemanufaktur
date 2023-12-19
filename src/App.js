@@ -2,8 +2,20 @@ import { Outlet } from "react-router-dom";
 import "./App.css";
 import Menu from "./menu/Menu";
 import menu from "./assets/icons/menu.svg";
+import { useEffect } from "react";
+import { ApiService } from "./utils/ApiService";
 
 function App() {
+	const api = new ApiService();
+
+	useEffect(() => {
+		api.ping()
+			.then(() => {})
+			.catch((e) => {
+				document.getElementById("systemerror").showModal();
+			});
+	}, []);
+
 	return (
 		<>
 			<div className="flex bg-background overflow-auto w-full h-full">
@@ -34,6 +46,15 @@ function App() {
 					</div>
 				</div>
 			</div>
+			<dialog id="systemerror" className="modal">
+				<div className="modal-box">
+					<h3 className="font-bold text-lg text-error">Fehler!</h3>
+					<p className="py-4">
+						Die Anwendung ist derzeit nicht verfügbar. Probieren Sie
+						es später erneut.
+					</p>
+				</div>
+			</dialog>
 		</>
 	);
 }
