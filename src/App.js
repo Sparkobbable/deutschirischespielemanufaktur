@@ -16,7 +16,7 @@ function App() {
 					<div className="drawer-content flex flex-col">
 						<label
 							htmlFor="my-drawer-2"
-							className="btn border-none drawer-button absolute w-14 h-14 top-5 left-5 bg-headline z-30 lg:hidden"
+							className="btn border-none drawer-button absolute w-14 h-14 top-3 left-3 bg-headline z-30 lg:hidden"
 						>
 							<img className="w-14 h-14" src={menu} alt="Menü" />
 						</label>
