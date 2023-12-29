@@ -395,7 +395,7 @@ export default function OrderForm() {
 					<p className="text-xs text-start">
 						Mit dem Häkchen zur Datenschutzerklärung erklärst Du
 						Dich einverstanden, dass Dein Name, Deine Adresse und
-						Dein E-Mail für die Abwicklung der Bestellung
+						Deine E-Mail für die Abwicklung der Bestellung
 						gespeichert und genutzt werden darf.
 					</p>
 				</div>
