@@ -32,7 +32,7 @@ export default function Order() {
 					<span className="text-headline text-lg">
 						€{item.price} zuzüglich Versandkosten{" "}
 					</span>
-					erhältlich.
+					erhältlich. Die Bezahlung erfolgt im Nachgang per Rechnung.
 				</p>
 				<p className="text-lg mt-3">
 					Nach vorheriger Absprache kann das Spiel auch in Bad Soden
