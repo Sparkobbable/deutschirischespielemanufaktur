@@ -86,7 +86,11 @@ export default function Menu() {
 						<p className="text-center -translate-y-1/4">Kontakt</p>
 					</div>
 				</div>
-				<img src={logo} alt="Deutsch-Irische Spielemanufaktur"></img>
+				<img
+					src={logo}
+					width="268px"
+					alt="Deutsch-Irische Spielemanufaktur"
+				></img>
 			</div>
 		</>
 	);
