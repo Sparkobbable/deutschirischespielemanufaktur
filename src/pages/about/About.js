@@ -6,7 +6,9 @@ export default function About() {
 	return (
 		<>
 			<div className="w-full text-center">
-				<h1 className="text-headline text-2xl font-bold">Über uns</h1>
+				<h1 className="lg:w-2/3 text-headline text-2xl font-bold">
+					Über uns
+				</h1>
 				<div className="lg:flex mt-10">
 					<div className="lg:w-2/3 block text-center">
 						<p className="text-lg">
@@ -35,7 +37,7 @@ export default function About() {
 							<span className="text-headline text-lg">Jutta</span>{" "}
 							wohnt seit 1999 in Dublin und liebt den Irish craic,
 							ist aber ihrer deutschen Heimat treugeblieben und
-							regelmässig in Bad Soden oder Paderborn anzutreffen.
+							regelmäßig in Bad Soden oder Paderborn anzutreffen.
 						</p>
 						<p className="text-lg mt-10">
 							Unsere Wohnorte haben uns die Inspiration für
