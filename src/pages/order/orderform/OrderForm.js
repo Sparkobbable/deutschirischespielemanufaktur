@@ -17,13 +17,7 @@ export default function OrderForm() {
 	const apiService = new ApiService();
 
 	const [countrys, setCountrys] = useState(
-		[
-			"Deutschland",
-			"Irland",
-			"Österreich",
-			"Schweiz",
-			"Großbritannien",
-		].sort()
+		["Deutschland", "Irland", "Österreich", "Niederlande"].sort()
 	);
 
 	const [sources, setSources] = useState(
