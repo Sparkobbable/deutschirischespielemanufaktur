@@ -428,7 +428,8 @@ export default function OrderForm() {
 					<p className="py-4">
 						Wir werden Sie über die angegebene E-Mail kontaktieren.
 						Auf diesem Weg erhalten Sie die Rechnung und
-						Informationen zur Bestellung.
+						Informationen zur Bestellung. Bitte prüfen Sie auch
+						Ihren Spam-Ordner.
 					</p>
 					<div className="modal-action">
 						<form method="dialog">
