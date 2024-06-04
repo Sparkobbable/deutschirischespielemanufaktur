@@ -25,4 +25,12 @@ export class ApiService {
 			timeout: 2500,
 		});
 	}
+
+	sendMessage(dto) {
+		return axios({
+			method: "post",
+			url: this.BASE_URL + "/messages/new",
+			data: dto,
+		});
+	}
 }

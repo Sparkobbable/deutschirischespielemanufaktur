@@ -31,7 +31,7 @@ jobs:
 
         steps:
             - name: add cloudflared
-              uses: debugci/setup-cloudflared@v1
+              uses: actions-marketplace-validations/debugci_setup-cloudflared@main
             - name: setup connector
               run: sudo cloudflared service install ${{secrets.CLOUDFLARED_TUNNEL_TOKEN}}
             - name: install id rsa

@@ -25,6 +25,17 @@ export default function Impressum() {
 				</p>
 				<p className="text-xs">Joseph-Haydn-Straße 5</p>
 				<p className="text-xs">65812 Bad Soden</p>
+				<p className="text-xs">
+					Umsatzsteuer-Identifikationsnummer gemäß §27a
+					Umsatzsteuergesetz: DE366397164
+				</p>
+				<p className="text-xs font-bold">Online-Streitbeilegung</p>
+				<p className="text-xs">
+					Die Europäische Kommission stellt unter
+					http://ec.europa.eu/consumers/odr/ eine Plattform zur
+					Online-Streitbeilegung (nach Art. 14 Abs. 1 ODR-Verordnung)
+					bereit.
+				</p>
 				<p className="text-xs font-bold mt-4">Haftung für Inhalte:</p>
 				<p className="text-xs">
 					Die Inhalte unserer Seiten wurden mit größter Sorgfalt

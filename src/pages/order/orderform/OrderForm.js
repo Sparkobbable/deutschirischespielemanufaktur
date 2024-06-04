@@ -17,13 +17,7 @@ export default function OrderForm() {
 	const apiService = new ApiService();
 
 	const [countrys, setCountrys] = useState(
-		[
-			"Deutschland",
-			"Irland",
-			"Österreich",
-			"Schweiz",
-			"Großbritannien",
-		].sort()
+		["Deutschland", "Irland", "Österreich", "Niederlande"].sort()
 	);
 
 	const [sources, setSources] = useState(
@@ -395,7 +389,7 @@ export default function OrderForm() {
 					<p className="text-xs text-start">
 						Mit dem Häkchen zur Datenschutzerklärung erklärst Du
 						Dich einverstanden, dass Dein Name, Deine Adresse und
-						Dein E-Mail für die Abwicklung der Bestellung
+						Deine E-Mail für die Abwicklung der Bestellung
 						gespeichert und genutzt werden darf.
 					</p>
 				</div>
@@ -433,6 +427,8 @@ export default function OrderForm() {
 					</p>
 					<p className="py-4">
 						Wir werden Sie über die angegebene E-Mail kontaktieren.
+						Auf diesem Weg erhalten Sie die Rechnung und
+						Informationen zur Bestellung.
 					</p>
 					<div className="modal-action">
 						<form method="dialog">
