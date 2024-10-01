@@ -73,7 +73,21 @@ export default function Contact() {
 				<h1 className="text-headline text-2xl font-bold">Kontakt</h1>
 			</div>
 			<p className="mt-5 w-1/2 mx-auto">
-				Für Anfragen, Anregungen und Feedback bitte das Formular nutzen:
+				Für Anfragen, Anregungen und Feedback sind wir wie folgt zu
+				erreichen:
+			</p>
+			<p className="mt-5 w-1/2 mx-auto">
+				Deutsch-Irische Spielemanufaktur Wilmesmeier Guhlke GbR
+			</p>
+			<p className="mt-5 w-1/2 mx-auto">
+				Jutta Wilmesmeier und Astrid Guhlke
+			</p>
+			<p className="mt-5 w-1/2 mx-auto">
+				E-Mail: spielemanufaktur@outlook.com
+			</p>
+			<p className="mt-5 w-1/2 mx-auto">Tel: +49-176-7603-5250</p>
+			<p className="mt-5 w-1/2 mx-auto">
+				Alternativ kann auch dieses Kontaktformular benutzt werden.
 			</p>
 			<form className="mt-5 w-full text-center">
 				<div className="lg:w-1/2  flex justify-between mx-auto">
