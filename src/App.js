@@ -4,6 +4,7 @@ import Menu from "./menu/Menu";
 import menu from "./assets/icons/menu.svg";
 import { useEffect } from "react";
 import { ApiService } from "./utils/ApiService";
+import DesktopMenu from "./menu/DesktopMenu";
 
 function App() {
 	const api = new ApiService();
@@ -18,8 +19,8 @@ function App() {
 
 	return (
 		<>
-			<div className="flex bg-background overflow-auto w-full h-full">
-				<div className="drawer lg:drawer-open">
+			<div className="flex bg-background overflow-auto w-full h-full lg:hidden">
+				<div className="drawer">
 					<input
 						id="my-drawer-2"
 						type="checkbox"
@@ -44,6 +45,12 @@ function App() {
 						></label>
 						<Menu />
 					</div>
+				</div>
+			</div>
+			<div className="hidden overflow-auto bg-background w-full h-full lg:block">
+				<DesktopMenu></DesktopMenu>
+				<div className="p-10">
+					<Outlet />
 				</div>
 			</div>
 			<dialog id="systemerror" className="modal">
