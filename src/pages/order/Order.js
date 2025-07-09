@@ -86,6 +86,7 @@ export default function Order() {
 						type="number"
 						placeholder="Anzahl"
 						className="input input-bordered w-4/5"
+						aria-label="Anzahl der Spiele"
 						value={quantity}
 						onChange={(e) => setQuantity(e.target.valueAsNumber)}
 						min={1}

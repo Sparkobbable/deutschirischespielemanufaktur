@@ -20,7 +20,7 @@ export default function DesktopMenu() {
 	return (
 		<>
 			<div className="flex flex-row justify-between w-full bg-grey opacity-90">
-				<div className="flex flex-row justify-between w-3/4">
+				<div className="flex flex-row justify-between w-3/4 pl-5">
 					<div
 						className={
 							!isHome
