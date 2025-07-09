@@ -132,10 +132,11 @@ export default function OrderForm() {
 								...customer,
 								gender: e.target.options[
 									e.target.selectedIndex
-								].getAttribute("data-key"),
+									].getAttribute("data-key"),
 							});
 							setGender(e.target.value);
 						}}
+						aria-label="Anrede des Kunden"
 					>
 						<option disabled selected>
 							Anrede
@@ -171,6 +172,7 @@ export default function OrderForm() {
 								firstName: e.target.value,
 							})
 						}
+						aria-label="Vorname des Kunden"
 					/>
 				</div>
 				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
@@ -190,6 +192,7 @@ export default function OrderForm() {
 								surename: e.target.value,
 							})
 						}
+						aria-label="Nachname des Kunden"
 					/>
 				</div>
 				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
@@ -205,6 +208,7 @@ export default function OrderForm() {
 								company: e.target.value,
 							})
 						}
+						aria-label="Unternehmen des Kunden (optional)"
 					/>
 				</div>
 				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
@@ -224,6 +228,7 @@ export default function OrderForm() {
 								adressline: e.target.value,
 							})
 						}
+						aria-label="Adresse des Kunden"
 					/>
 				</div>
 				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
@@ -243,6 +248,7 @@ export default function OrderForm() {
 								postalCode: e.target.value,
 							})
 						}
+						aria-label="Postleitzahl des Kunden"
 					/>
 				</div>
 				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
@@ -262,6 +268,7 @@ export default function OrderForm() {
 								city: e.target.value,
 							})
 						}
+						aria-label="Stadt des Kunden"
 					/>
 				</div>
 				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
@@ -279,7 +286,7 @@ export default function OrderForm() {
 								country:
 									e.target.options[
 										e.target.selectedIndex
-									].getAttribute("data-key"),
+										].getAttribute("data-key"),
 							});
 							setCountry(e.target.value);
 						}}
@@ -311,6 +318,7 @@ export default function OrderForm() {
 								email: e.target.value,
 							})
 						}
+						aria-label="E-Mail Adresse des Kunden"
 					/>
 				</div>
 				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
@@ -326,6 +334,7 @@ export default function OrderForm() {
 								phoneNumber: e.target.value,
 							})
 						}
+						aria-label="Telefonnummer des Kunden (optional)"
 					/>
 				</div>
 				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
@@ -340,6 +349,7 @@ export default function OrderForm() {
 								comment: e.target.value,
 							})
 						}
+						aria-label="Bemerkung des Kunden (optional)"
 					/>
 				</div>
 				<div className="lg:w-1/2 mt-3 flex justify-between mx-auto">
@@ -416,6 +426,7 @@ export default function OrderForm() {
 				ref={recaptchaRef}
 				onErrored={(e) => console.error(e)}
 			/>
+			<label htmlFor="g-recaptcha-response-1" aria-label="Sicherheitsüberprüfung Captcha"></label>
 			<dialog id="orderreturn" className="modal">
 				<div className="modal-box">
 					<h3 className="font-bold text-lg">

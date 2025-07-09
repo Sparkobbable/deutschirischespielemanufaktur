@@ -102,6 +102,7 @@ export default function Contact() {
 						placeholder="E-Mail Adresse"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
+						aria-label="E-Mail Adresse"
 					/>
 				</div>
 				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
@@ -116,6 +117,7 @@ export default function Contact() {
 						placeholder="Titel"
 						value={title}
 						onChange={(e) => setTitle(e.target.value)}
+						aria-label="Titel der Nachricht"
 					/>
 				</div>
 				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
@@ -125,6 +127,7 @@ export default function Contact() {
 						placeholder="Nachricht"
 						value={content}
 						onChange={(e) => setContent(e.target.value)}
+						aria-label="Nachricht"
 					/>
 				</div>
 				<div className="form-control lg:w-1/2 mx-auto mt-3">
@@ -140,6 +143,7 @@ export default function Contact() {
 							onChange={() =>
 								setPrivacyAccepted(!privacyAccepted)
 							}
+							aria-label="Datenschutzerklärung akzeptieren"
 						/>
 						<span className="label-text ml-2">
 							Es gilt die{" "}
@@ -181,6 +185,7 @@ export default function Contact() {
 				ref={recaptchaRef}
 				onErrored={(e) => console.error(e)}
 			/>
+			<label htmlFor="g-recaptcha-response-1" aria-label="Sicherheitsüberprüfung Captcha"></label>
 			<dialog id="messagereturn" className="modal">
 				<div className="modal-box">
 					<h3 className="font-bold text-lg">Nachricht versendet!</h3>

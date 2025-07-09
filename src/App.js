@@ -25,6 +25,7 @@ function App() {
 						id="my-drawer-2"
 						type="checkbox"
 						className="drawer-toggle"
+						aria-label="Menü umschalten"
 					/>
 					<div className="drawer-content flex flex-col">
 						<label
@@ -38,11 +39,10 @@ function App() {
 						</div>
 					</div>
 					<div className="drawer-side z-40">
-						<label
-							htmlFor="my-drawer-2"
-							aria-label="close sidebar"
+						<div
+							onClick={() => document.getElementById('my-drawer-2').checked = false}
 							className="drawer-overlay"
-						></label>
+						></div>
 						<Menu />
 					</div>
 				</div>
