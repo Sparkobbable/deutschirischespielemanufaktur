@@ -85,7 +85,7 @@ export default function Contact() {
 			<p className="mt-5 w-1/2 mx-auto">
 				E-Mail: spielemanufaktur@outlook.com
 			</p>
-			<p className="mt-5 w-1/2 mx-auto">Tel: +49-176-7603-5250</p>
+			<p className="mt-5 w-1/2 mx-auto">Tel: +49-152-2246-9339</p>
 			<p className="mt-5 w-1/2 mx-auto">
 				Alternativ kann auch dieses Kontaktformular benutzt werden.
 			</p>

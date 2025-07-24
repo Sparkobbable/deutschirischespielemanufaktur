@@ -51,11 +51,11 @@ export default function Order() {
 						<tbody>
 							<tr className=" border border-solid border-1 border-grey">
 								<td>1-5 Spiele</td>
-								<td>1,85 €</td>
+								<td>2,00 €</td>
 							</tr>
 							<tr className=" border border-solid border-1 border-grey">
 								<td>6-10 Spiele</td>
-								<td>3,00 €</td>
+								<td>3,10 €</td>
 							</tr>
 						</tbody>
 					</table>
