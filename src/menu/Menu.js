@@ -1,11 +1,9 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
 import buttonBg from "../assets/button_bg.png";
 import { useEffect, useState } from "react";
 
 export default function Menu() {
-	const navigate = useNavigate();
-
 	const { pathname } = useLocation();
 
 	const [isHome, setIsHome] = useState(true);
@@ -14,8 +12,10 @@ export default function Menu() {
 		setIsHome(pathname === "/");
 	}, [pathname]);
 
-	function navigateTo(path) {
-		navigate(path);
+	function scrollToSection(section) {
+		window.scrollToSection(section);
+		// Close the drawer after clicking a menu item
+		document.getElementById('my-drawer-2').checked = false;
 	}
 
 	const menuButtonStyle = {
@@ -35,21 +35,21 @@ export default function Menu() {
 								: "font-bold h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
 						}
 						style={menuButtonStyle}
-						onClick={() => navigateTo("/")}
+						onClick={() => scrollToSection("home")}
 					>
 						<p className="text-center -translate-y-1/4">
 							{isHome ? "Menu" : "Home"}
 						</p>
 					</div>
 					<div
-						onClick={() => navigateTo("/about")}
+						onClick={() => scrollToSection("about")}
 						className="hover:cursor-pointer h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
 						style={menuButtonStyle}
 					>
 						<p className="text-center -translate-y-1/4">Über uns</p>
 					</div>
 					<div
-						onClick={() => navigateTo("/idea")}
+						onClick={() => scrollToSection("idea")}
 						className="hover:cursor-pointer h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
 						style={menuButtonStyle}
 					>
@@ -58,7 +58,7 @@ export default function Menu() {
 						</p>
 					</div>
 					<div
-						onClick={() => navigateTo("/rules")}
+						onClick={() => scrollToSection("rules")}
 						className="hover:cursor-pointer h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
 						style={menuButtonStyle}
 					>
@@ -67,7 +67,7 @@ export default function Menu() {
 						</p>
 					</div>
 					<div
-						onClick={() => navigateTo("/order")}
+						onClick={() => scrollToSection("order")}
 						className="hover:cursor-pointer h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
 						style={menuButtonStyle}
 					>
@@ -76,7 +76,7 @@ export default function Menu() {
 						</p>
 					</div>
 					<div
-						onClick={() => navigateTo("/privacy")}
+						onClick={() => scrollToSection("privacy")}
 						className="hover:cursor-pointer h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
 						style={menuButtonStyle}
 					>
@@ -85,7 +85,7 @@ export default function Menu() {
 						</p>
 					</div>
 					<div
-						onClick={() => navigateTo("/impressum")}
+						onClick={() => scrollToSection("impressum")}
 						className="hover:cursor-pointer h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
 						style={menuButtonStyle}
 					>
@@ -94,7 +94,7 @@ export default function Menu() {
 						</p>
 					</div>
 					<div
-						onClick={() => navigateTo("/contact")}
+						onClick={() => scrollToSection("contact")}
 						className="hover:cursor-pointer h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
 						style={menuButtonStyle}
 					>
