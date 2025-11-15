@@ -2,9 +2,11 @@ import { useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
 import buttonBg from "../assets/button_bg.png";
 import { useEffect, useState } from "react";
+import { useLanguage } from "../utils/LanguageContext";
 
 export default function Menu() {
 	const { pathname } = useLocation();
+	const { language, toggleLanguage } = useLanguage();
 
 	const [isHome, setIsHome] = useState(true);
 
@@ -38,7 +40,7 @@ export default function Menu() {
 						onClick={() => scrollToSection("home")}
 					>
 						<p className="text-center -translate-y-1/4">
-							{isHome ? "Menu" : "Home"}
+							Home
 						</p>
 					</div>
 					<div
@@ -99,6 +101,15 @@ export default function Menu() {
 						style={menuButtonStyle}
 					>
 						<p className="text-center -translate-y-1/4">Kontakt</p>
+					</div>
+					<div
+						onClick={toggleLanguage}
+						className="hover:cursor-pointer h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
+						style={menuButtonStyle}
+					>
+						<p className="text-center -translate-y-1/4">
+							{language === 'de' ? 'English' : 'Deutsch'}
+						</p>
 					</div>
 				</div>
 				<img

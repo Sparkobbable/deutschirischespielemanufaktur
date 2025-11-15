@@ -5,6 +5,7 @@ import menu from "./assets/icons/menu.svg";
 import { useEffect } from "react";
 import { ApiService } from "./utils/ApiService";
 import DesktopMenu from "./menu/DesktopMenu";
+import { LanguageProvider } from "./utils/LanguageContext";
 
 function App() {
 	const api = new ApiService();
@@ -18,7 +19,7 @@ function App() {
 	}, []);
 
 	return (
-		<>
+		<LanguageProvider>
 			{/* Mobile View */}
 			<div className="flex flex-col bg-background w-full h-full lg:hidden">
 				<div className="drawer">
@@ -76,7 +77,7 @@ function App() {
 					</div>
 				</div>
 			</dialog>
-		</>
+		</LanguageProvider>
 	);
 }
 
