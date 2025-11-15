@@ -48,7 +48,7 @@ export default function Menu() {
 						className="hover:cursor-pointer h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
 						style={menuButtonStyle}
 					>
-						<p className="text-center -translate-y-1/4">Über uns</p>
+						<p className="text-center -translate-y-1/4">{language === 'de' ? 'Über uns' : 'About'}</p>
 					</div>
 					<div
 						onClick={() => scrollToSection("idea")}
@@ -56,7 +56,7 @@ export default function Menu() {
 						style={menuButtonStyle}
 					>
 						<p className="text-center -translate-y-1/4">
-							Spielidee
+							{language === 'de' ? 'Spielidee' : 'Game idea'}
 						</p>
 					</div>
 					<div
@@ -65,7 +65,7 @@ export default function Menu() {
 						style={menuButtonStyle}
 					>
 						<p className="text-center -translate-y-1/4">
-							Regeln & Varianten
+							{language === 'de' ? 'Regeln und Varianten' : 'Rules and Variants'}
 						</p>
 					</div>
 					<div
@@ -74,7 +74,7 @@ export default function Menu() {
 						style={menuButtonStyle}
 					>
 						<p className="text-center -translate-y-1/4">
-							Bestellungen
+							{language === 'de' ? 'Bestellungen' : 'Orders'}
 						</p>
 					</div>
 					<div
@@ -83,7 +83,7 @@ export default function Menu() {
 						style={menuButtonStyle}
 					>
 						<p className="text-center -translate-y-1/4">
-							Datenschutzerklärung
+							{language === 'de' ? 'Datenschutzerklärung' : 'Privacy Policy'}
 						</p>
 					</div>
 					<div
@@ -92,7 +92,7 @@ export default function Menu() {
 						style={menuButtonStyle}
 					>
 						<p className="text-center -translate-y-1/4">
-							Impressum
+							{language === 'de' ? 'Impressum' : 'Imprint'}
 						</p>
 					</div>
 					<div
@@ -100,7 +100,7 @@ export default function Menu() {
 						className="hover:cursor-pointer h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
 						style={menuButtonStyle}
 					>
-						<p className="text-center -translate-y-1/4">Kontakt</p>
+						<p className="text-center -translate-y-1/4">{language === 'de' ? 'Kontakt' : 'Contact'}</p>
 					</div>
 					<div
 						onClick={toggleLanguage}

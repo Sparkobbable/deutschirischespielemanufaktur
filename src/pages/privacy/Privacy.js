@@ -1,16 +1,31 @@
 import privacyPdf from "../../assets/privacy.pdf";
+import { useLanguage } from "../../utils/LanguageContext";
 
 export default function Privacy() {
+	const { language } = useLanguage();
 	return (
-		<>
-			<div className="w-full text-center">
-				<h1 className="text-headline text-2xl font-bold mb-4">
-					Datenschutzerklärung
-				</h1>
-			</div>
-			<a className="text-href text-start" href={privacyPdf} download>
-				Klicken zum Herunterladen der Datenschutzerklärung
-			</a>
-		</>
+		<> {language === 'de' ?
+			<>
+				<div className="w-full text-center">
+					<h1 className="text-headline text-2xl font-bold mb-4">
+						Datenschutzerklärung
+					</h1>
+				</div>
+				<a className="text-href text-start" href={privacyPdf} download>
+					Klicken zum Herunterladen der Datenschutzerklärung
+				</a>
+			</>
+			:
+			<>
+				<div className="w-full text-center">
+					<h1 className="text-headline text-2xl font-bold mb-4">
+
+					</h1>
+				</div>
+				<a className="text-href text-start" href={privacyPdf} download>
+
+				</a>
+			</>
+		} </>
 	);
 }

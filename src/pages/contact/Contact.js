@@ -2,6 +2,7 @@ import { createRef, useState } from "react";
 import { ApiService } from "../../utils/ApiService";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useNavigate } from "react-router-dom";
+import { useLanguage } from "../../utils/LanguageContext";
 
 export default function Contact() {
 	const recaptchaRef = createRef();
@@ -21,6 +22,8 @@ export default function Contact() {
 	const [formErrors, setFormErrors] = useState([]);
 
 	const [messageId, setMessageId] = useState();
+
+	const { language } = useLanguage();
 
 	function validateForm() {
 		setFormErrors([]);
@@ -68,156 +71,290 @@ export default function Contact() {
 	}
 
 	return (
-		<>
-			<div className="w-full text-center">
-				<h1 className="text-headline text-2xl font-bold">Kontakt</h1>
-			</div>
-			<p className="mt-5 w-1/2 mx-auto">
-				Für Anfragen, Anregungen und Feedback sind wir wie folgt zu
-				erreichen:
-			</p>
-			<p className="mt-5 w-1/2 mx-auto">
-				Deutsch-Irische Spielemanufaktur Wilmesmeier Guhlke GbR
-			</p>
-			<p className="mt-5 w-1/2 mx-auto">
-				Jutta Wilmesmeier und Astrid Guhlke
-			</p>
-			<p className="mt-5 w-1/2 mx-auto">
-				E-Mail: spielemanufaktur@outlook.com
-			</p>
-			<p className="mt-5 w-1/2 mx-auto">Tel: +49-152-2246-9339</p>
-			<p className="mt-5 w-1/2 mx-auto">
-				Alternativ kann auch dieses Kontaktformular benutzt werden.
-			</p>
-			<form className="mt-5 w-full text-center">
-				<div className="lg:w-1/2  flex justify-between mx-auto">
-					<p className="translate-y-2">E-Mail: </p>
-					<input
-						type="email"
-						className={`input ${
-							formErrors.includes("email")
-								? "input-error"
-								: "input-bordered"
-						} w-1/2`}
-						placeholder="E-Mail Adresse"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						aria-label="E-Mail Adresse"
-					/>
+		<> {language === 'de' ? 
+			<>
+				<div className="w-full text-center">
+					<h1 className="text-headline text-2xl font-bold">Kontakt</h1>
 				</div>
-				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
-					<p className="translate-y-2">Titel der Nachricht: </p>
-					<input
-						type="text"
-						className={`input ${
-							formErrors.includes("title")
-								? "input-error"
-								: "input-bordered"
-						} w-1/2`}
-						placeholder="Titel"
-						value={title}
-						onChange={(e) => setTitle(e.target.value)}
-						aria-label="Titel der Nachricht"
-					/>
-				</div>
-				<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
-					<p className="translate-y-2">Nachricht: </p>
-					<textarea
-						className="textarea textarea-bordered w-1/2"
-						placeholder="Nachricht"
-						value={content}
-						onChange={(e) => setContent(e.target.value)}
-						aria-label="Nachricht"
-					/>
-				</div>
-				<div className="form-control lg:w-1/2 mx-auto mt-3">
-					<label className="label cursor-pointer justify-start">
+				<p className="mt-5 w-1/2 mx-auto">
+					Für Anfragen, Anregungen und Feedback sind wir wie folgt zu
+					erreichen:
+				</p>
+				<p className="mt-5 w-1/2 mx-auto">
+					Deutsch-Irische Spielemanufaktur Wilmesmeier Guhlke GbR
+				</p>
+				<p className="mt-5 w-1/2 mx-auto">
+					Jutta Wilmesmeier und Astrid Guhlke
+				</p>
+				<p className="mt-5 w-1/2 mx-auto">
+					E-Mail: spielemanufaktur@outlook.com
+				</p>
+				<p className="mt-5 w-1/2 mx-auto">Tel: +49-152-2246-9339</p>
+				<p className="mt-5 w-1/2 mx-auto">
+					Alternativ kann auch dieses Kontaktformular benutzt werden.
+				</p>
+				<form className="mt-5 w-full text-center">
+					<div className="lg:w-1/2  flex justify-between mx-auto">
+						<p className="translate-y-2">E-Mail: </p>
 						<input
-							type="checkbox"
-							checked={privacyAccepted}
-							className={`checkbox ${
-								formErrors.includes("privacy")
-									? "checkbox-error"
-									: ""
-							}`}
-							onChange={() =>
-								setPrivacyAccepted(!privacyAccepted)
-							}
-							aria-label="Datenschutzerklärung akzeptieren"
+							type="email"
+							className={`input ${
+								formErrors.includes("email")
+									? "input-error"
+									: "input-bordered"
+							} w-1/2`}
+							placeholder="E-Mail Adresse"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+							aria-label="E-Mail Adresse"
 						/>
-						<span className="label-text ml-2">
-							Es gilt die{" "}
-							<span
-								className="label-text text-href cursor-pointer"
-								onClick={() => navigate("/privacy")}
-							>
-								Datenschutzerklärung
+					</div>
+					<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
+						<p className="translate-y-2">Titel der Nachricht: </p>
+						<input
+							type="text"
+							className={`input ${
+								formErrors.includes("title")
+									? "input-error"
+									: "input-bordered"
+							} w-1/2`}
+							placeholder="Titel"
+							value={title}
+							onChange={(e) => setTitle(e.target.value)}
+							aria-label="Titel der Nachricht"
+						/>
+					</div>
+					<div className="lg:w-1/2  flex justify-between mx-auto mt-3">
+						<p className="translate-y-2">Nachricht: </p>
+						<textarea
+							className="textarea textarea-bordered w-1/2"
+							placeholder="Nachricht"
+							value={content}
+							onChange={(e) => setContent(e.target.value)}
+							aria-label="Nachricht"
+						/>
+					</div>
+					<div className="form-control lg:w-1/2 mx-auto mt-3">
+						<label className="label cursor-pointer justify-start">
+							<input
+								type="checkbox"
+								checked={privacyAccepted}
+								className={`checkbox ${
+									formErrors.includes("privacy")
+										? "checkbox-error"
+										: ""
+								}`}
+								onChange={() =>
+									setPrivacyAccepted(!privacyAccepted)
+								}
+								aria-label="Datenschutzerklärung akzeptieren"
+							/>
+							<span className="label-text ml-2">
+								Es gilt die{" "}
+								<span
+									className="label-text text-href cursor-pointer"
+									onClick={() => navigate("/privacy")}
+								>
+									Datenschutzerklärung
+								</span>
+								.
 							</span>
-							.
-						</span>
-					</label>
-					<p className="text-xs text-start">
-						Mit dem Häkchen zur Datenschutzerklärung erklärst Du
-						Dich einverstanden, dass Deine E-Mail für die Abwicklung
-						der Nachricht gespeichert und genutzt werden darf.
-					</p>
-				</div>
-				{formErrors.length > 0 && (
-					<label className="label w-1/2 mx-auto -mb-5">
-						<span className="label-text-alt text-error">
-							Es sind nicht alle Pflichtfelder korrekt befüllt!
-						</span>
-					</label>
-				)}
-				<button
-					onClick={(e) => {
-						e.preventDefault();
-						send();
-					}}
-					className="btn bg-headline w-1/2 mx-auto mt-5 border-none"
-				>
-					Nachricht senden
-				</button>
-			</form>
-			<ReCAPTCHA
-				sitekey="6LfWBDUpAAAAAD0sCMmmyjsiAW8xtTgEf1njMndI"
-				size="invisible"
-				ref={recaptchaRef}
-				onErrored={(e) => console.error(e)}
-			/>
-			<label htmlFor="g-recaptcha-response-1" aria-label="Sicherheitsüberprüfung Captcha"></label>
-			<dialog id="messagereturn" className="modal">
-				<div className="modal-box">
-					<h3 className="font-bold text-lg">Nachricht versendet!</h3>
-					<p className="py-4">
-						Nachricht mit der Nummer #{messageId} erfolgreich
-						verschickt.
-					</p>
-					<p className="py-4">
-						Wir werden Sie über die angegebene E-Mail kontaktieren.
-					</p>
-					<div className="modal-action">
-						<form method="dialog">
-							<button className="btn">Schließen</button>
-						</form>
+						</label>
+						<p className="text-xs text-start">
+							Mit dem Häkchen zur Datenschutzerklärung erklärst Du
+							Dich einverstanden, dass Deine E-Mail für die Abwicklung
+							der Nachricht gespeichert und genutzt werden darf.
+						</p>
 					</div>
-				</div>
-			</dialog>
-			<dialog id="messageerror" className="modal">
-				<div className="modal-box">
-					<h3 className="font-bold text-lg text-error">Fehler!</h3>
-					<p className="py-4">
-						Bei der Versendung der Nachricht ist ein Fehler
-						aufgetreten. Bitte kontaktieren Sie uns per E-Mail an
-						spielemanufaktur@outlook.com
-					</p>
-					<div className="modal-action">
-						<form method="dialog">
-							<button className="btn">Schließen</button>
-						</form>
+					{formErrors.length > 0 && (
+						<label className="label w-1/2 mx-auto -mb-5">
+							<span className="label-text-alt text-error">
+								Es sind nicht alle Pflichtfelder korrekt befüllt!
+							</span>
+						</label>
+					)}
+					<button
+						onClick={(e) => {
+							e.preventDefault();
+							send();
+						}}
+						className="btn bg-headline w-1/2 mx-auto mt-5 border-none"
+					>
+						Nachricht senden
+					</button>
+				</form>
+				<ReCAPTCHA
+					sitekey="6LfWBDUpAAAAAD0sCMmmyjsiAW8xtTgEf1njMndI"
+					size="invisible"
+					ref={recaptchaRef}
+					onErrored={(e) => console.error(e)}
+				/>
+				<label htmlFor="g-recaptcha-response-1" aria-label="Sicherheitsüberprüfung Captcha"></label>
+				<dialog id="messagereturn" className="modal">
+					<div className="modal-box">
+						<h3 className="font-bold text-lg">Nachricht versendet!</h3>
+						<p className="py-4">
+							Nachricht mit der Nummer #{messageId} erfolgreich
+							verschickt.
+						</p>
+						<p className="py-4">
+							Wir werden Sie über die angegebene E-Mail kontaktieren.
+						</p>
+						<div className="modal-action">
+							<form method="dialog">
+								<button className="btn">Schließen</button>
+							</form>
+						</div>
 					</div>
+				</dialog>
+				<dialog id="messageerror" className="modal">
+					<div className="modal-box">
+						<h3 className="font-bold text-lg text-error">Fehler!</h3>
+						<p className="py-4">
+							Bei der Versendung der Nachricht ist ein Fehler
+							aufgetreten. Bitte kontaktieren Sie uns per E-Mail an
+							spielemanufaktur@outlook.com
+						</p>
+						<div className="modal-action">
+							<form method="dialog">
+								<button className="btn">Schließen</button>
+							</form>
+						</div>
+					</div>
+				</dialog>
+			</>
+			:
+			<>
+				<div className="w-full text-center">
+					<h1 className="text-headline text-2xl font-bold">Contact</h1>
 				</div>
-			</dialog>
-		</>
+				<p className="mt-5 w-1/2 mx-auto">
+					We‘d love to hear from you. For any inquiries, suggestions, or feedback, please contact us as follows:
+				</p>
+				<p className="mt-5 w-1/2 mx-auto">
+					Deutsch-Irische Spielemanufaktur Wilmesmeier Guhlke GbR
+				</p>
+				<p className="mt-5 w-1/2 mx-auto">
+					Jutta Wilmesmeier und Astrid Guhlke
+				</p>
+				<p className="mt-5 w-1/2 mx-auto">
+					E-Mail: spielemanufaktur@outlook.com
+				</p>
+				<p className="mt-5 w-1/2 mx-auto">Tel: +49-152-2246-9339</p>
+				<p className="mt-5 w-1/2 mx-auto">
+					Alternatively, you may use this form.
+				</p>
+				<form className="mt-5 w-full text-center">
+					<div className="lg:w-1/2 flex justify-between mx-auto">
+						<p className="translate-y-2">Email: </p>
+						<input
+							type="email"
+							className={`input ${
+								formErrors.includes("email")
+									? "input-error"
+									: "input-bordered"
+							} w-1/2`}
+							placeholder="Email address"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+							aria-label="Email address"
+						/>
+					</div>
+					<div className="lg:w-1/2 flex justify-between mx-auto mt-3">
+						<p className="translate-y-2">Message title: </p>
+						<input
+							type="text"
+							className={`input ${
+								formErrors.includes("title")
+									? "input-error"
+									: "input-bordered"
+							} w-1/2`}
+							placeholder="Title"
+							value={title}
+							onChange={(e) => setTitle(e.target.value)}
+							aria-label="Message title"
+						/>
+					</div>
+					<div className="lg:w-1/2 flex justify-between mx-auto mt-3">
+						<p className="translate-y-2">Message: </p>
+						<textarea
+							className="textarea textarea-bordered w-1/2"
+							placeholder="Message"
+							value={content}
+							onChange={(e) => setContent(e.target.value)}
+							aria-label="Message"
+						/>
+					</div>
+					<div className="form-control lg:w-1/2 mx-auto mt-3">
+						<label className="label cursor-pointer justify-start">
+							<input
+								type="checkbox"
+								checked={privacyAccepted}
+								className={`checkbox ${
+									formErrors.includes("privacy")
+										? "checkbox-error"
+										: ""
+								}`}
+								onChange={() =>
+									setPrivacyAccepted(!privacyAccepted)
+								}
+								aria-label="Accept privacy policy"
+							/>
+							<span className="label-text ml-2">
+								<span
+									className="label-text text-href cursor-pointer"
+									onClick={() => navigate("/privacy")}
+								>
+									Privacy Policy
+								</span>
+							</span>
+						</label>
+					</div>
+					{formErrors.length > 0 && (
+						<label className="label w-1/2 mx-auto -mb-5">
+							<span className="label-text-alt text-error">
+								Please fill in all required fields!
+							</span>
+						</label>
+					)}
+					<button
+						onClick={(e) => {
+							e.preventDefault();
+							send();
+						}}
+						className="btn bg-headline w-1/2 mx-auto mt-5 border-none"
+					>
+						Send message
+					</button>
+				</form>
+				<ReCAPTCHA
+					sitekey="6LfWBDUpAAAAAD0sCMmmyjsiAW8xtTgEf1njMndI"
+					size="invisible"
+					ref={recaptchaRef}
+					onErrored={(e) => console.error(e)}
+				/>
+				<label htmlFor="g-recaptcha-response-1" aria-label="Security check captcha"></label>
+				<dialog id="messagereturn" className="modal">
+					<div className="modal-box">
+						<h3 className="font-bold text-lg">Message sent!</h3>
+						<div className="modal-action">
+							<form method="dialog">
+								<button className="btn">Close</button>
+							</form>
+						</div>
+					</div>
+				</dialog>
+				<dialog id="messageerror" className="modal">
+					<div className="modal-box">
+						<h3 className="font-bold text-lg text-error">Error!</h3>
+						<div className="modal-action">
+							<form method="dialog">
+								<button className="btn">Close</button>
+							</form>
+						</div>
+					</div>
+				</dialog>
+			</>
+		} </>
 	);
 }

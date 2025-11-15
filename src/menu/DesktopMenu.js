@@ -45,7 +45,7 @@ export default function DesktopMenu() {
 						className="hover:cursor-pointer flex-grow m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
 						style={menuButtonStyle}
 					>
-						<p className="text-center">Über uns</p>
+						<p className="text-center">{language === 'de' ? 'Über uns' : 'About'}</p>
 					</div>
 					<div
 						onClick={() => scrollToSection("idea")}
@@ -53,7 +53,7 @@ export default function DesktopMenu() {
 						style={menuButtonStyle}
 					>
 						<p className="text-center">
-							Spielidee
+							{language === 'de' ? 'Spielidee' : 'Game idea'}
 						</p>
 					</div>
 					<div
@@ -62,7 +62,7 @@ export default function DesktopMenu() {
 						style={menuButtonStyle}
 					>
 						<p className="text-center">
-							Regeln & Varianten
+							{language === 'de' ? 'Regeln und Varianten' : 'Rules and Variants'}
 						</p>
 					</div>
 					<div
@@ -71,7 +71,7 @@ export default function DesktopMenu() {
 						style={menuButtonStyle}
 					>
 						<p className="text-center">
-							Bestellungen
+							{language === 'de' ? 'Bestellungen' : 'Orders'}
 						</p>
 					</div>
 					<div
@@ -80,7 +80,7 @@ export default function DesktopMenu() {
 						style={menuButtonStyle}
 					>
 						<p className="text-center">
-							Datenschutzerklärung
+							{language === 'de' ? 'Datenschutzerklärung' : 'Privacy Policy'}
 						</p>
 					</div>
 					<div
@@ -89,7 +89,7 @@ export default function DesktopMenu() {
 						style={menuButtonStyle}
 					>
 						<p className="text-center">
-							Impressum
+							{language === 'de' ? 'Impressum' : 'Imprint'}
 						</p>
 					</div>
 					<div
@@ -97,7 +97,7 @@ export default function DesktopMenu() {
 						className="hover:cursor-pointer flex-grow m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
 						style={menuButtonStyle}
 					>
-						<p className="text-center">Kontakt</p>
+						<p className="text-center">{language === 'de' ? 'Kontakt' : 'Contact'}</p>
 					</div>
 					<div
 						onClick={toggleLanguage}
