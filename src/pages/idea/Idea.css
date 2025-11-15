@@ -1,0 +1,54 @@
+/* Wrapper nur zur Demo (zentriert Textbereich rechts) */
+.row {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+    width: 70%;
+    min-width: 70%;
+    margin: 0 auto;
+}
+
+/* Die Liste */
+ul.word-diamonds {
+    list-style: none;
+    padding: 0;
+    width: auto;
+    margin: 0 auto;
+}
+
+/* Jedes li als flex: Symbol + Inhalt */
+.word-diamonds li {
+    display: flex;
+    align-items: center;     /* vertikal mittig */
+    gap: 14px;               /* Abstand zwischen Icon und Text */
+    padding: 6px 0;          /* vertikaler Abstand zwischen Punkten */
+    line-height: 1.35;       /* passt mehrzeilige Zeilenabstände an */
+}
+
+/* ::before als Inline-Icon (SVG Data-URL) */
+.word-diamonds li::before {
+    content: "";
+    width: 18px;             /* Icon-Größe — anpassen */
+    height: 18px;
+    flex: 0 0 18px;         /* verhindert Skalierung */
+    display: inline-block;
+    background-image: url("data:image/svg+xml;utf8,\
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+        <rect x='9' y='1.5' width='6' height='6' transform='rotate(45 12 4.5)' fill='%2389a0f0'/>\
+        <rect x='15' y='7.5' width='6' height='6' transform='rotate(45 18 10.5)' fill='%2389a0f0'/>\
+        <rect x='9' y='13.5' width='6' height='6' transform='rotate(45 12 16.5)' fill='%2389a0f0'/>\
+        <rect x='3' y='7.5' width='6' height='6' transform='rotate(45 6 10.5)' fill='%2389a0f0'/>\
+      </svg>");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    /* optional: leichter Schatten wie im Word-Screenshot */
+    filter: drop-shadow(0 0.5px 0 rgba(0,0,0,0.05));
+}
+
+/* Anpassungen für kleinere Bildschirme */
+@media (max-width: 740px) {
+    .row { flex-direction: column; align-items: stretch; }
+    .word-diamonds { width: auto; }
+    .text-area { text-align: left; }
+}

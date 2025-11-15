@@ -19,26 +19,26 @@ export default function Order() {
 	return (
 		<>
 			<div className="w-full text-center">
-				<h1 className="text-headline text-2xl font-bold">
-					Bestellungen
+				<h1 className="text-2xl font-bold">
+					Bestellen
 				</h1>
 			</div>
 			<div className="mt-5">
 				<p className="text-lg">
-					„Dein Jahr - Die Magie der Erinnerung“ ist eine tolle Idee
-					als Wichtelgeschenk, Weihnachtsgeschenk oder Mitbringsel für
-					die Silvesterfeier, oder Ihr schenkt es Euch einfach selbst!
-					Das Spiel ist zum Preis von{" "}
-					<span className="text-headline text-lg">
-						€{item.price} zuzüglich Versandkosten{" "}
-					</span>
-					erhältlich. Nach Bestelleingang antworten wir umgehend mit
-					Informationen zum weiteren Vorgehen und versenden das Spiel
-					unmittelbar nach Zahlungseingang.
+					„Dein Jahr – Die Magie der Erinnerung“ ist das perfekte Geschenk zum Wichteln,
+					zu Weihnachten oder als Mitbringsel zur Silvesterfeier – oder einfach ein Geschenk an Dich selbst.
+				</p>
+				<p className="text-lg">
+					<span className="font-bold">Preis: </span>{" "}€{item.price} zzgl. Versand.
 				</p>
 				<p className="text-lg mt-3">
-					Nach vorheriger Absprache kann das Spiel auch in Bad Soden
-					abgeholt werden. Bitte dies im Bestellformular angeben.
+					Nach Deiner Bestellung erhältst du umgehend alle Infos, und das Spiel macht sich direkt nach
+					Zahlungseingang auf den Weg zu dir.
+
+				</p>
+				<p className="text-lg mt-3">
+					Eine Abholung in <span className="font-bold"> Bad Soden</span> oder <span className="font-bold">Kelkheim</span> ist nach Absprache ebenfalls möglich –
+					bitte im Bestellformular angeben.
 				</p>
 				<div className="overflow-x-auto w-full lg:w-1/4 mr-auto bg-background mt-5">
 					<table className="table border border-solid border-1 border-grey">
@@ -61,8 +61,8 @@ export default function Order() {
 					</table>
 				</div>
 				<p className="text-xs">
-					Bitte kontaktiert uns zu den Versandkosten bei größeren
-					Bestellmengen.
+					Bitte kontaktier uns unter spielemanufaktur@outlook.com zu den Versandkosten
+					bei größeren Bestellmengen oder ins EU-Ausland.
 				</p>
 			</div>
 			<div className="mt-5 w-full text-center">
@@ -102,6 +102,9 @@ export default function Order() {
 				>
 					Bestellen
 				</button>
+				<h1 className="text-headline text-2xl font-bold">
+					Spiele, erinnere Dich, teile Deine Geschichten – und lass die Magie der Erinnerung wirken!
+				</h1>
 			</div>
 		</>
 	);
