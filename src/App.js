@@ -5,6 +5,7 @@ import menu from "./assets/icons/menu.svg";
 import { useEffect } from "react";
 import { ApiService } from "./utils/ApiService";
 import DesktopMenu from "./menu/DesktopMenu";
+import { LanguageProvider } from "./utils/LanguageContext";
 
 function App() {
 	const api = new ApiService();
@@ -18,8 +19,9 @@ function App() {
 	}, []);
 
 	return (
-		<>
-			<div className="flex bg-background overflow-auto w-full h-full lg:hidden">
+		<LanguageProvider>
+			{/* Mobile View */}
+			<div className="flex flex-col bg-background w-full h-full lg:hidden">
 				<div className="drawer">
 					<input
 						id="my-drawer-2"
@@ -28,13 +30,15 @@ function App() {
 						aria-label="Menü umschalten"
 					/>
 					<div className="drawer-content flex flex-col">
-						<label
-							htmlFor="my-drawer-2"
-							className="btn border-none drawer-button absolute w-14 h-14 top-3 left-3 bg-headline z-30 lg:hidden"
-						>
-							<img className="w-14 h-14" src={menu} alt="Menü" />
-						</label>
-						<div className="p-10">
+						<div className="fixed top-0 left-0 w-full z-30">
+							<label
+								htmlFor="my-drawer-2"
+								className="btn border-none drawer-button w-14 h-14 m-3 bg-headline lg:hidden"
+							>
+								<img className="w-14 h-14" src={menu} alt="Menü" />
+							</label>
+						</div>
+						<div className="mt-20 p-10 overflow-auto">
 							<Outlet />
 						</div>
 					</div>
@@ -47,9 +51,12 @@ function App() {
 					</div>
 				</div>
 			</div>
-			<div className="hidden overflow-auto bg-background w-full h-full lg:block">
-				<DesktopMenu></DesktopMenu>
-				<div className="p-10">
+			{/* Desktop View */}
+			<div className="hidden flex-col bg-background w-full h-full lg:flex">
+				<div className="sticky top-0 z-30 bg-background">
+					<DesktopMenu />
+				</div>
+				<div className="p-10 overflow-auto">
 					<Outlet />
 				</div>
 			</div>
@@ -70,7 +77,7 @@ function App() {
 					</div>
 				</div>
 			</dialog>
-		</>
+		</LanguageProvider>
 	);
 }
 

@@ -1,11 +1,12 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
+import buttonBg from "../assets/button_bg.png";
 import { useEffect, useState } from "react";
+import { useLanguage } from "../utils/LanguageContext";
 
 export default function Menu() {
-	const navigate = useNavigate();
-
 	const { pathname } = useLocation();
+	const { language, toggleLanguage } = useLanguage();
 
 	const [isHome, setIsHome] = useState(true);
 
@@ -13,77 +14,102 @@ export default function Menu() {
 		setIsHome(pathname === "/");
 	}, [pathname]);
 
-	function navigateTo(path) {
-		navigate(path);
+	function scrollToSection(section) {
+		window.scrollToSection(section);
+		// Close the drawer after clicking a menu item
+		document.getElementById('my-drawer-2').checked = false;
 	}
+
+	const menuButtonStyle = {
+		backgroundImage: `url(${buttonBg})`,
+		backgroundSize: 'cover',
+		backgroundPosition: 'center'
+	};
 
 	return (
 		<>
-			<div className="flex flex-col justify-between h-full bg-grey opacity-90">
+			<div className="flex flex-col justify-between h-full">
 				<div className="block h-3/4">
 					<div
 						className={
 							!isHome
-								? "hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey flex flex-col justify-center"
-								: "font-bold h-1/10 border-b-2 border-grey flex flex-col justify-center"
+								? "hover:cursor-pointer h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
+								: "font-bold h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
 						}
-						onClick={() => navigateTo("/")}
+						style={menuButtonStyle}
+						onClick={() => scrollToSection("home")}
 					>
 						<p className="text-center -translate-y-1/4">
-							{isHome ? "Menu" : "Home"}
+							Home
 						</p>
 					</div>
 					<div
-						onClick={() => navigateTo("/about")}
-						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey flex flex-col justify-center"
+						onClick={() => scrollToSection("about")}
+						className="hover:cursor-pointer h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
+						style={menuButtonStyle}
 					>
-						<p className="text-center -translate-y-1/4">Über uns</p>
+						<p className="text-center -translate-y-1/4">{language === 'de' ? 'Über uns' : 'About'}</p>
 					</div>
 					<div
-						onClick={() => navigateTo("/idea")}
-						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey flex flex-col justify-center"
+						onClick={() => scrollToSection("idea")}
+						className="hover:cursor-pointer h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
+						style={menuButtonStyle}
 					>
 						<p className="text-center -translate-y-1/4">
-							Spielidee
+							{language === 'de' ? 'Spielidee' : 'Game idea'}
 						</p>
 					</div>
 					<div
-						onClick={() => navigateTo("/rules")}
-						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey flex flex-col justify-center"
+						onClick={() => scrollToSection("rules")}
+						className="hover:cursor-pointer h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
+						style={menuButtonStyle}
 					>
 						<p className="text-center -translate-y-1/4">
-							Regeln & Varianten
+							{language === 'de' ? 'Regeln und Varianten' : 'Rules and Variants'}
 						</p>
 					</div>
 					<div
-						onClick={() => navigateTo("/order")}
-						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey flex flex-col justify-center"
+						onClick={() => scrollToSection("order")}
+						className="hover:cursor-pointer h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
+						style={menuButtonStyle}
 					>
 						<p className="text-center -translate-y-1/4">
-							Bestellungen
+							{language === 'de' ? 'Bestellungen' : 'Orders'}
 						</p>
 					</div>
 					<div
-						onClick={() => navigateTo("/privacy")}
-						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey flex flex-col justify-center"
+						onClick={() => scrollToSection("privacy")}
+						className="hover:cursor-pointer h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
+						style={menuButtonStyle}
 					>
 						<p className="text-center -translate-y-1/4">
-							Datenschutzerklärung
+							{language === 'de' ? 'Datenschutzerklärung' : 'Privacy Policy'}
 						</p>
 					</div>
 					<div
-						onClick={() => navigateTo("/impressum")}
-						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey flex flex-col justify-center"
+						onClick={() => scrollToSection("impressum")}
+						className="hover:cursor-pointer h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
+						style={menuButtonStyle}
 					>
 						<p className="text-center -translate-y-1/4">
-							Impressum
+							{language === 'de' ? 'Impressum' : 'Imprint'}
 						</p>
 					</div>
 					<div
-						onClick={() => navigateTo("/contact")}
-						className="hover:bg-bgdark hover:cursor-pointer h-1/10 border-b-2 border-grey flex flex-col justify-center"
+						onClick={() => scrollToSection("contact")}
+						className="hover:cursor-pointer h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
+						style={menuButtonStyle}
 					>
-						<p className="text-center -translate-y-1/4">Kontakt</p>
+						<p className="text-center -translate-y-1/4">{language === 'de' ? 'Kontakt' : 'Contact'}</p>
+					</div>
+					<div
+						onClick={toggleLanguage}
+						className="hover:cursor-pointer h-1/10 m-2 border-2 border-black rounded-lg text-black flex flex-col justify-center"
+						style={menuButtonStyle}
+					>
+						<p className="text-center -translate-y-1/4">
+							{language === 'de' ? 'English' : 'Deutsch'}
+						</p>
 					</div>
 				</div>
 				<img

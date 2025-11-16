@@ -13,15 +13,12 @@ module.exports = {
 			background: "#EEEEEE",
 			bgdark: "#8F97C6",
 			grey: "#737175",
-			headline: "#4A5DA3", /* Changed from #5F76C2 to improve contrast ratio with background */
+			headline: "#8d9dff", /* Changed from #5F76C2 to improve contrast ratio with background */
 			error: "#FF5861",
 			href: "#0563C1",
 		},
 		fontFamily: {
-			sans: ["Graphik", "sans-serif"],
-			serif: ["Merriweather", "serif"],
-			"pulp-display": ["Pulp Display", "sans-serif"],
-			roboto: ["Roboto", "sans-serif"],
+			verdana: ["Verdana", "sans-serif"],
 		},
 		extend: {
 			spacing: {
