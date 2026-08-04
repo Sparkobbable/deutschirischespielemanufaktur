@@ -21,7 +21,7 @@ function App() {
 	return (
 		<LanguageProvider>
 			{/* Mobile View */}
-			<div className="flex flex-col bg-background w-full h-full lg:hidden">
+			<div className="flex flex-col bg-white w-full h-full lg:hidden">
 				<div className="drawer">
 					<input
 						id="my-drawer-2"
